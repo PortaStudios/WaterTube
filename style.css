@@ -128,3 +128,17 @@ body {
 .error {
   color: #ff4d4d;
 }
+
+.pagination-nav button {
+  background: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination-nav button:hover {
+  background: #ff3333;
+}
