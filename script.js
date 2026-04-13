@@ -1,9 +1,16 @@
 (function() {
   const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
   const resultsContainer = document.getElementById('results');
   
   let allLinks = [];
   let isLoading = true;
+
+  function performSearch() {
+    const query = searchInput.value.trim();
+    const filtered = filterResults(query);
+    renderResults(filtered);
+  }
 
   async function fetchLinks() {
     try {
@@ -12,6 +19,13 @@
       const data = await response.json();
       
       const chunkUrls = data.chunks || [];
+      
+      if (chunkUrls.length === 0) {
+        allLinks = data.items || [];
+        isLoading = false;
+        renderResults(allLinks);
+        return;
+      }
       
       const chunkPromises = chunkUrls.map(async (url) => {
         try {
@@ -36,7 +50,7 @@
   }
 
   function filterResults(query) {
-    if (!query.trim()) return [];
+    if (!query.trim()) return allLinks;
     
     const lowerQuery = query.toLowerCase();
     return allLinks.filter(item => {
@@ -81,10 +95,11 @@
     return div.innerHTML;
   }
 
-  searchInput.addEventListener('input', (e) => {
-    const filtered = filterResults(e.target.value);
-    renderResults(filtered);
+  searchInput.addEventListener('input', performSearch);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') performSearch();
   });
+  searchBtn.addEventListener('click', performSearch);
 
   fetchLinks();
 })();

@@ -1,5 +1,19 @@
 {
   "chunks": [
-    "https://example.com/chunks/chunk1.json"
+    "https://your-lanzou-link.com/chunk1.json"
+  ],
+  "items": [
+    {
+      "title": "Sample Video 1",
+      "description": "This is a sample video entry for testing",
+      "url": "https://example.com/video1",
+      "tags": ["sample", "test", "demo"]
+    },
+    {
+      "title": "Sample Video 2",
+      "description": "Another sample video entry",
+      "url": "https://example.com/video2",
+      "tags": ["sample", "demo"]
+    }
   ]
 }
