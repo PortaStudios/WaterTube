@@ -77,6 +77,27 @@ body {
   transform: translateY(0);
 }
 
+#languageFilter {
+  padding: 16px 20px;
+  font-size: 14px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#languageFilter:focus {
+  border-color: #ff4d4d;
+}
+
+#languageFilter option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
 .results {
   text-align: left;
 }
@@ -129,16 +150,41 @@ body {
   color: #ff4d4d;
 }
 
-.pagination-nav button {
-  background: #ff4b4b;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 5px;
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  padding: 20px 0;
 }
 
-.pagination-nav button:hover {
-  background: #ff3333;
+.pagination button {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #ff6666;
+  transform: translateY(-2px);
+}
+
+.pagination button:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.pagination .page-info {
+  color: #888;
+  font-size: 14px;
+  min-width: 120px;
+  text-align: center;
 }
